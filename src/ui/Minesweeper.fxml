@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MinesweeperFrame">
+    <padding>
+        <Insets topRightBottomLeft="20" />
+    </padding>
+
+    <Button text="Restart" onAction="#btnRestart" layoutX="300.0" layoutY="17.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="111.0" />
+
+    <Label alignment="CENTER" layoutX="80.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Width" underline="true">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtTileWidth" text="10" layoutX="80.0" layoutY="44.0" prefHeight="44.0" prefWidth="87.0">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </TextField>
+
+    <Label alignment="CENTER" layoutX="188.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Height" underline="true">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtTileHeight" text="10" layoutX="188.0" layoutY="44.0" prefHeight="44.0" prefWidth="87.0">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </TextField>
+
+    <Label alignment="CENTER" layoutX="438.0" layoutY="14.0" prefHeight="30.0" prefWidth="111.0" text="# of Mines" underline="true">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtNumMines" text="10" layoutX="438.0" layoutY="44.0" prefHeight="44.0" prefWidth="111.0">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </TextField>
+
+    <GridPane fx:id="gridPane" onMouseReleased="#gridClickReleased" layoutX="14.0" layoutY="96.0" prefHeight="300.0" prefWidth="572.0" alignment="CENTER"/>
+
+</AnchorPane>
