@@ -19,7 +19,7 @@ data class Board(val width: Int, val height: Int, private val numMines: Int) {
         val mineTiles = arrayListOf<Tile>()
         while (mineTiles.size < numMines) {
             val tryTile = Tile(rand.nextInt(width), rand.nextInt(height))
-            if (!mineTiles.contains(tryTile))
+            if (!mineTiles.contains(tryTile) && tryTile != Tile(x, y))
                 mineTiles.add(tryTile)
         }
 
@@ -27,11 +27,11 @@ data class Board(val width: Int, val height: Int, private val numMines: Int) {
             tiles[mineTile.x][mineTile.y] = mineTile
     }
 
-    fun showTiles(gridRoot: GridPane) {
+    fun addTiles(gridRoot: GridPane) {
         for (row in tiles) {
             for (tile in row) {
                 val imageView = ImageView(tile.image)
-                val maxHeight = gridRoot.prefHeight - 20
+                val maxHeight = gridRoot.prefHeight
                 imageView.fitHeight = maxHeight / height
                 imageView.fitWidth = maxHeight / height
                 gridRoot.add(imageView, tile.x, tile.y)

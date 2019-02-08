@@ -1,6 +1,5 @@
 package ui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -22,15 +21,15 @@ public class MinesweeperFrame {
         reset();
     }
 
-    @FXML
     private void gridClickReleased(MouseEvent event) {
         gameStarted = true;
         double x = event.getX();
         double y = event.getY();
-
-        x /= board.getWidth();
-        y /= board.getHeight();
         System.out.println(x + "  " + y);
+
+        x /= gridPane.getWidth();
+        y /= gridPane.getHeight();
+//        System.out.println(x + "  " + y);
 
         if (!gameStarted) {
             reset();
@@ -45,11 +44,11 @@ public class MinesweeperFrame {
         reset();
     }
 
-    void reset() {
+    private void reset() {
         board = new Board(Integer.valueOf(txtTileWidth.getText()),
                 Integer.valueOf(txtTileHeight.getText()),
                 Integer.valueOf(txtNumMines.getText())
         );
-        board.showTiles(gridPane);
+        board.addTiles(gridPane);
     }
 }

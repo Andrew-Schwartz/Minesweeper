@@ -48,6 +48,6 @@
         </font>
     </TextField>
 
-    <GridPane fx:id="gridPane" onMouseReleased="#gridClickReleased" layoutX="14.0" layoutY="96.0" prefHeight="300.0" prefWidth="572.0" alignment="CENTER"/>
+    <GridPane fx:id="gridPane" onMouseReleased="#gridClickReleased" gridLinesVisible="true" layoutX="14.0" layoutY="96.0" prefHeight="300.0" prefWidth="572.0" alignment="CENTER"/>
 
 </AnchorPane>
