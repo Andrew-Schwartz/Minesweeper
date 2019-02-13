@@ -14,7 +14,7 @@ public class MinesweeperFrame {
     private GridPane gridPane;
 
     private Board board;
-    private boolean gameStarted = false;
+    private static boolean gameStarted = false;
 
     @FXML
     void initialize() {
@@ -40,7 +40,7 @@ public class MinesweeperFrame {
     @FXML
     private void btnRestart() {
         gameStarted = false;
-        board.resetAllTiles();
+        board.resetAllTiles(gridPane);
         reset();
     }
 
@@ -51,4 +51,11 @@ public class MinesweeperFrame {
         );
         board.addTiles(gridPane);
     }
+
+//    private double bottomRightX() {
+//        return gridPane.getChildren().get(gridPane.getChildren().size() - 1).getLayoutX();
+//    }
+//    private double bottomRightY() {
+//        return gridPane.getChildren().get(gridPane.getChildren().size() - 1).getLayoutY();
+//    }
 }
