@@ -14,32 +14,15 @@ public class MinesweeperFrame {
     private GridPane gridPane;
 
     private Board board;
-    private static boolean gameStarted = false;
 
     @FXML
     void initialize() {
         reset();
     }
 
-    private void gridClickReleased(MouseEvent event) {
-        gameStarted = true;
-        double x = event.getX();
-        double y = event.getY();
-        System.out.println(x + "  " + y);
-
-        x /= gridPane.getWidth();
-        y /= gridPane.getHeight();
-//        System.out.println(x + "  " + y);
-
-        if (!gameStarted) {
-            reset();
-            board.initialize((int) x, (int) y);
-        }
-    }
-
     @FXML
     private void btnRestart() {
-        gameStarted = false;
+//        gameStarted = false;
         board.resetAllTiles(gridPane);
         reset();
     }
