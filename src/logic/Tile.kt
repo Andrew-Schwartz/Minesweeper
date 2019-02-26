@@ -33,14 +33,15 @@ data class Tile(val x: Int, val y: Int) {
         }
     }
 
-    fun flag() {
-        if (isRevealed) return
+    fun flag(): Boolean {
+        if (isRevealed) return false
         if (isFlagged) {
             imageView.image = startImage
         } else {
             imageView.image = Image("images/Flag.png")
         }
         isFlagged = !isFlagged
+        return isFlagged
     }
 
     val isBomb get() = value == -1

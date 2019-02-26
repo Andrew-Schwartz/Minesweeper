@@ -1,6 +1,8 @@
 package logic
 
+import javafx.beans.property.SimpleIntegerProperty
 import javafx.event.EventHandler
+import javafx.scene.control.Alert
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.AnchorPane
@@ -16,7 +18,6 @@ class Board(
 ) {
     companion object {
         private val rand = Random()
-        private var gameStarted = false
     }
 
     var tiles: Array<Array<Tile>> = Array(width) { x ->
@@ -25,10 +26,10 @@ class Board(
         }
     }
 
-    var imageSize = 0.0; private set
-
     var gridWidth = (gridRoot.parent as AnchorPane).prefWidth - gridRoot.layoutX * 2
         set(value) {
+            (gridRoot.parent as AnchorPane).prefWidth = value + gridRoot.layoutX
+
             gridRoot.children.clear()
             addTiles()
 
@@ -37,13 +38,19 @@ class Board(
 
     var gridHeight = (gridRoot.parent as AnchorPane).prefHeight - gridRoot.layoutY - 20
         set(value) {
+            (gridRoot.parent as AnchorPane).prefHeight = value + gridRoot.layoutY + 20
+
             gridRoot.children.clear()
             addTiles()
 
             field = value
         }
 
-    private var revealedTileCount: Int = 0
+    private var gameStarted = false
+
+    val flaggedTileCount = SimpleIntegerProperty(0)
+
+    private var bombTiles = arrayOf<Tile>()
 
     /**
      * x,y are location of clicked tile
@@ -57,6 +64,7 @@ class Board(
             val tryY = rand.nextInt(height)
             if (!tiles[tryX][tryY].isBomb) {
                 tiles[tryX][tryY].value = -1
+                bombTiles += tiles[tryX][tryY]
                 count++
             }
         }
@@ -67,6 +75,7 @@ class Board(
             tiles[x][y].value = 0
         }
 
+        // each tile's value is the sum of the number of bombs adjacent to it
         for (tile in tiles.flatten()) {
             if (tile.isBomb) continue
             tile.value = tile.adjacentTiles
@@ -83,9 +92,7 @@ class Board(
 
     fun addTiles() {
         for (tile in tiles.flatten()) {
-            val maxHeight = gridHeight
-            val maxWidth = gridWidth
-            imageSize = min(maxHeight / height, maxWidth / width)
+            val imageSize = min(gridHeight / height, gridWidth / width)
             tile.imageView.fitHeight = imageSize
             tile.imageView.fitWidth = imageSize
             tile.imageView.onMouseReleased = EventHandler { this.handleClick(it, tile) }
@@ -96,16 +103,30 @@ class Board(
     }
 
     private fun handleClick(event: MouseEvent, tile: Tile) {
-        if (event.button == MouseButton.SECONDARY || event.isControlDown) {
-            flagTile(tile.x, tile.y)
-            checkIfWon()
-        } else {
-            clickTile(tile.x, tile.y)
-            checkIfWon()
-        }
+        if (event.button == MouseButton.SECONDARY || event.isControlDown) flagTile(tile.x, tile.y)
+        else clickTile(tile.x, tile.y)
+
+        checkIfWon()
     }
 
     private fun checkIfWon() {
+        if (bombTiles.any { it.isRevealed }) {
+            val alert = Alert(Alert.AlertType.INFORMATION)
+            alert.title = "YA LOST"
+            alert.headerText = "Donut click mines"
+            alert.showAndWait()
+
+            resetAllTiles()
+            addTiles()
+        }
+
+        if (tiles.flatten().all { it.isRevealed || it.isBomb }) {
+            val alert = Alert(Alert.AlertType.INFORMATION)
+            alert.title = "you win"
+            alert.headerText = "good job"
+            alert.contentText = ":("
+            alert.showAndWait()
+        }
     }
 
     private fun clickTile(x: Int, y: Int) {
@@ -117,7 +138,7 @@ class Board(
         if (tiles[x][y].isFlagged) return
 
         tiles[x][y].reveal()
-        revealedTileCount++
+//        revealedTileCount++
 
         for (coord in tiles[x][y].adjacentTiles) {
             // make sure tile is in bounds
@@ -137,11 +158,15 @@ class Board(
     }
 
     private fun flagTile(x: Int, y: Int) {
-        tiles[x][y].flag()
+        if (tiles[x][y].isRevealed) return
+
+        if (tiles[x][y].flag()) flaggedTileCount.value++
+        else flaggedTileCount.value--
     }
 
     fun resetAllTiles() {
         gameStarted = false
+        bombTiles = emptyArray()
         tiles.flatten().forEach { it.reset() }
         gridRoot.children.clear()
     }

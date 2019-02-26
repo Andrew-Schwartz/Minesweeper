@@ -48,6 +48,17 @@
         </font>
     </TextField>
 
+    <Label fx:id="lblFlagLabel" alignment="CENTER" layoutY="14" prefHeight="30" prefWidth="111" text="# of Flags" underline="true">
+        <font>
+            <Font size="20"/>
+        </font>
+    </Label>
+    <Label fx:id="lblNumFlags" alignment="CENTER" layoutY="44" prefHeight="30" prefWidth="111" text="0">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Label>
+
     <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="false" layoutX="20.0" layoutY="96.0" />
 
 </AnchorPane>
