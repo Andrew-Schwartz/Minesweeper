@@ -11,7 +11,7 @@ import logic.Board;
 
 public class MinesweeperFrame {
     @FXML
-    private Label lblWidth, lblHeight, lblNumMines, lblFlagLabel, lblNumFlags;
+    private Label lblWidth, lblHeight, lblNumMines, lblFlagLabel, lblNumFlags, lblTimer, lblTimerLabel;
 
     @FXML
     private Button btnReset;
@@ -32,7 +32,7 @@ public class MinesweeperFrame {
         stage.widthProperty().addListener((this::windowWidthListener));
         stage.heightProperty().addListener(this::windowHeightListener);
 
-        lblNumFlags.textProperty().bind(board.getFlaggedTileCount().asString());
+//        lblNumFlags.textProperty().bind(board.getFlaggedTileCount().asString());
     }
 
     @FXML
@@ -45,7 +45,8 @@ public class MinesweeperFrame {
         board = new Board(Integer.valueOf(txtTileWidth.getText()),
                 Integer.valueOf(txtTileHeight.getText()),
                 Integer.valueOf(txtNumMines.getText()),
-                gridPane
+                gridPane,
+                lblNumFlags
         );
         board.addTiles();
     }
@@ -53,13 +54,13 @@ public class MinesweeperFrame {
     private void windowWidthListener(ObservableValue<? extends Number> obs, Number oldWidth, Number newWidth) {
         double width = newWidth.doubleValue();
 
-        lblWidth.setLayoutX(width * .0375);
-        txtTileWidth.setLayoutX(width * .0375);
+        lblWidth.setLayoutX(width * .13);
+        txtTileWidth.setLayoutX(width * .13);
 
-        lblHeight.setLayoutX(width * .2125);
-        txtTileHeight.setLayoutX(width * .2125);
+        lblHeight.setLayoutX(width * .2825);
+        txtTileHeight.setLayoutX(width * .2825);
 
-        btnReset.setLayoutX(width * .4);
+        btnReset.setLayoutX(width * .44);
 
         lblNumMines.setLayoutX(width * .625);
         txtNumMines.setLayoutX(width * .625);
