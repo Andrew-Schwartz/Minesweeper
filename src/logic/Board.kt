@@ -1,8 +1,10 @@
 package logic
 
+import javafx.beans.property.IntegerProperty
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
+import javafx.scene.control.Label
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.AnchorPane
@@ -14,7 +16,8 @@ class Board(
     private val width: Int,
     private val height: Int,
     private var numMines: Int,
-    private val gridRoot: GridPane
+    private val gridRoot: GridPane,
+    private val lblNumFlags: Label
 ) {
     companion object {
         private val rand = Random()
@@ -48,7 +51,12 @@ class Board(
 
     private var gameStarted = false
 
-    val flaggedTileCount = SimpleIntegerProperty(0)
+    private var flaggedTileCount = 0
+        set(value) {
+            lblNumFlags.text = value.toString()
+
+            field = value
+        }
 
     private var bombTiles = arrayOf<Tile>()
 
@@ -64,7 +72,6 @@ class Board(
             val tryY = rand.nextInt(height)
             if (!tiles[tryX][tryY].isBomb) {
                 tiles[tryX][tryY].value = -1
-                bombTiles += tiles[tryX][tryY]
                 count++
             }
         }
@@ -74,6 +81,8 @@ class Board(
             tiles.flatten().filter { !it.isBomb }.random().value = -1
             tiles[x][y].value = 0
         }
+
+        bombTiles = tiles.flatten().filter { it.isBomb }.toTypedArray()
 
         // each tile's value is the sum of the number of bombs adjacent to it
         for (tile in tiles.flatten()) {
@@ -138,7 +147,6 @@ class Board(
         if (tiles[x][y].isFlagged) return
 
         tiles[x][y].reveal()
-//        revealedTileCount++
 
         for (coord in tiles[x][y].adjacentTiles) {
             // make sure tile is in bounds
@@ -160,8 +168,8 @@ class Board(
     private fun flagTile(x: Int, y: Int) {
         if (tiles[x][y].isRevealed) return
 
-        if (tiles[x][y].flag()) flaggedTileCount.value++
-        else flaggedTileCount.value--
+        if (tiles[x][y].flag()) flaggedTileCount++
+        else flaggedTileCount--
     }
 
     fun resetAllTiles() {
@@ -169,5 +177,6 @@ class Board(
         bombTiles = emptyArray()
         tiles.flatten().forEach { it.reset() }
         gridRoot.children.clear()
+        flaggedTileCount = 0
     }
 }

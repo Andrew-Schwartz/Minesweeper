@@ -15,6 +15,17 @@
 
     <Button fx:id="btnReset" layoutY="17.0" mnemonicParsing="false" onAction="#btnRestart" prefHeight="69.0" prefWidth="111.0" text="Restart" />
 
+    <Label fx:id="lblTimerLabel" alignment="CENTER" layoutX="0" layoutY="14" prefHeight="30" prefWidth="87" text="Time" underline="true">
+        <font>
+            <Font size="20" />
+        </font>
+    </Label>
+    <Label fx:id="lblTimer" alignment="CENTER" layoutX="0" layoutY="44" prefHeight="30" prefWidth="87" text="0">
+        <font>
+            <Font size="20"/>
+        </font>
+    </Label>
+
     <Label fx:id="lblWidth" alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Width" underline="true">
         <font>
             <Font size="20.0" />
@@ -59,6 +70,6 @@
         </font>
     </Label>
 
-    <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="false" layoutX="20.0" layoutY="96.0" />
+    <GridPane fx:id="gridPane" alignment="CENTER" layoutX="20.0" layoutY="96.0" />
 
 </AnchorPane>

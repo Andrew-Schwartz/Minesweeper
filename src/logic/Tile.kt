@@ -5,8 +5,12 @@ import javafx.scene.image.ImageView
 
 @Suppress("EqualsOrHashCode")
 data class Tile(val x: Int, val y: Int) {
+    companion object {
+        private val startImage = Image("images/CoveredTile.png")
+        private val flagImage = Image("images/Flag.png")
+    }
+
     var value: Int = 0
-    private val startImage = Image("images/CoveredTile.png")
     val imageView = ImageView(startImage)
     var isFlagged = false
     var isRevealed = false
@@ -38,7 +42,7 @@ data class Tile(val x: Int, val y: Int) {
         if (isFlagged) {
             imageView.image = startImage
         } else {
-            imageView.image = Image("images/Flag.png")
+            imageView.image = flagImage
         }
         isFlagged = !isFlagged
         return isFlagged

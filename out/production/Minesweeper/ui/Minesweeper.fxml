@@ -8,46 +8,68 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MinesweeperFrame">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MinesweeperFrame">
     <padding>
         <Insets topRightBottomLeft="20" />
     </padding>
 
-    <Button text="Restart" onAction="#btnRestart" layoutX="300.0" layoutY="17.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="111.0" />
+    <Button fx:id="btnReset" layoutY="17.0" mnemonicParsing="false" onAction="#btnRestart" prefHeight="69.0" prefWidth="111.0" text="Restart" />
 
-    <Label alignment="CENTER" layoutX="80.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Width" underline="true">
+    <Label fx:id="lblTimerLabel" alignment="CENTER" layoutX="0" layoutY="14" prefHeight="30" prefWidth="87" text="Time" underline="true">
+        <font>
+            <Font size="20" />
+        </font>
+    </Label>
+    <Label fx:id="lblTimer" alignment="CENTER" layoutX="0" layoutY="44" prefHeight="30" prefWidth="87" text="0">
+        <font>
+            <Font size="20"/>
+        </font>
+    </Label>
+
+    <Label fx:id="lblWidth" alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Width" underline="true">
         <font>
             <Font size="20.0" />
         </font>
     </Label>
-    <TextField fx:id="txtTileWidth" text="10" layoutX="80.0" layoutY="44.0" prefHeight="44.0" prefWidth="87.0">
+    <TextField fx:id="txtTileWidth" layoutY="44.0" prefHeight="44.0" prefWidth="87.0" text="10">
         <font>
             <Font size="20.0" />
         </font>
     </TextField>
 
-    <Label alignment="CENTER" layoutX="188.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Height" underline="true">
+    <Label fx:id="lblHeight" alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" text="Height" underline="true">
         <font>
             <Font size="20.0" />
         </font>
     </Label>
-    <TextField fx:id="txtTileHeight" text="10" layoutX="188.0" layoutY="44.0" prefHeight="44.0" prefWidth="87.0">
+    <TextField fx:id="txtTileHeight" layoutY="44.0" prefHeight="44.0" prefWidth="87.0" text="10">
         <font>
             <Font size="20.0" />
         </font>
     </TextField>
 
-    <Label alignment="CENTER" layoutX="438.0" layoutY="14.0" prefHeight="30.0" prefWidth="111.0" text="# of Mines" underline="true">
+    <Label fx:id="lblNumMines" alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="111.0" text="# of Mines" underline="true">
         <font>
             <Font size="20.0" />
         </font>
     </Label>
-    <TextField fx:id="txtNumMines" text="10" layoutX="438.0" layoutY="44.0" prefHeight="44.0" prefWidth="111.0">
+    <TextField fx:id="txtNumMines" layoutY="44.0" prefHeight="44.0" prefWidth="111.0" text="10">
         <font>
             <Font size="20.0" />
         </font>
     </TextField>
 
-    <GridPane fx:id="gridPane" gridLinesVisible="true" layoutX="14.0" layoutY="96.0" prefHeight="300.0" prefWidth="572.0" alignment="CENTER"/>
+    <Label fx:id="lblFlagLabel" alignment="CENTER" layoutY="14" prefHeight="30" prefWidth="111" text="# of Flags" underline="true">
+        <font>
+            <Font size="20"/>
+        </font>
+    </Label>
+    <Label fx:id="lblNumFlags" alignment="CENTER" layoutY="44" prefHeight="30" prefWidth="111" text="0">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Label>
+
+    <GridPane fx:id="gridPane" alignment="CENTER" layoutX="20.0" layoutY="96.0" />
 
 </AnchorPane>
