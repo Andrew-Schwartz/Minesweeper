@@ -1,5 +1,6 @@
 package logic
 
+import javafx.beans.property.IntegerProperty
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
@@ -48,7 +49,7 @@ class Board(
 
     private var gameStarted = false
 
-    val flaggedTileCount = SimpleIntegerProperty(0)
+    val flaggedTileCount: IntegerProperty = SimpleIntegerProperty(0)
 
     private var bombTiles = arrayOf<Tile>()
 
@@ -64,7 +65,6 @@ class Board(
             val tryY = rand.nextInt(height)
             if (!tiles[tryX][tryY].isBomb) {
                 tiles[tryX][tryY].value = -1
-                bombTiles += tiles[tryX][tryY]
                 count++
             }
         }
@@ -74,6 +74,8 @@ class Board(
             tiles.flatten().filter { !it.isBomb }.random().value = -1
             tiles[x][y].value = 0
         }
+
+        bombTiles = tiles.flatten().filter { it.isBomb }.toTypedArray()
 
         // each tile's value is the sum of the number of bombs adjacent to it
         for (tile in tiles.flatten()) {
@@ -112,8 +114,9 @@ class Board(
     private fun checkIfWon() {
         if (bombTiles.any { it.isRevealed }) {
             val alert = Alert(Alert.AlertType.INFORMATION)
-            alert.title = "YA LOST"
-            alert.headerText = "Donut click mines"
+            alert.title = "game over"
+            alert.headerText = "YA LOST"
+            alert.contentText = "Donut click mines"
             alert.showAndWait()
 
             resetAllTiles()
@@ -122,9 +125,9 @@ class Board(
 
         if (tiles.flatten().all { it.isRevealed || it.isBomb }) {
             val alert = Alert(Alert.AlertType.INFORMATION)
-            alert.title = "you win"
-            alert.headerText = "good job"
-            alert.contentText = ":("
+            alert.title = ":("
+            alert.headerText = "you win"
+            alert.contentText = "good job"
             alert.showAndWait()
         }
     }
@@ -138,7 +141,6 @@ class Board(
         if (tiles[x][y].isFlagged) return
 
         tiles[x][y].reveal()
-//        revealedTileCount++
 
         for (coord in tiles[x][y].adjacentTiles) {
             // make sure tile is in bounds
@@ -169,5 +171,6 @@ class Board(
         bombTiles = emptyArray()
         tiles.flatten().forEach { it.reset() }
         gridRoot.children.clear()
+        flaggedTileCount.value = 0
     }
 }

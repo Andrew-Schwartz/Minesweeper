@@ -4,9 +4,12 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 
 @Suppress("EqualsOrHashCode")
-data class Tile(val x: Int, val y: Int) {
+class Tile(val x: Int, val y: Int) {
+    companion object {
+        private val startImage = Image("images/CoveredTile.png")
+    }
+
     var value: Int = 0
-    private val startImage = Image("images/CoveredTile.png")
     val imageView = ImageView(startImage)
     var isFlagged = false
     var isRevealed = false
@@ -49,14 +52,14 @@ data class Tile(val x: Int, val y: Int) {
     val adjacentTiles
         get() = arrayOf(
             x - 1 to y - 1,
-            x to y - 1,
+            x     to y - 1,
             x + 1 to y - 1,
 
-            x - 1 to y,
-            x + 1 to y,
+            x - 1 to y    ,
+            x + 1 to y    ,
 
             x - 1 to y + 1,
-            x to y + 1,
+            x     to y + 1,
             x + 1 to y + 1
         )
 

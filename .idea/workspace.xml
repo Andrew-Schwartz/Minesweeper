@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d663a4b-ec61-476a-9547-01a0f5972565" name="Default Changelist" comment="resizes itself, except for reset button">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Andrew_Schwartz.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/logic/Board$addTiles$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/logic/Board$addTiles$1.class" afterDir="false" />
@@ -11,11 +9,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/logic/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/logic/Tile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/ui/Minesweeper.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/ui/Minesweeper.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/ui/MinesweeperFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/ui/MinesweeperFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Board.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Tile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Tile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Minesweeper.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Minesweeper.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MinesweeperFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MinesweeperFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/Board.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+            <state relative-caret-position="206">
+              <caret line="115" column="36" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -86,10 +81,10 @@
         <option value="$PROJECT_DIR$/src/Main.kt" />
         <option value="$PROJECT_DIR$/src/ui/MinesweeperFrame.kt" />
         <option value="$PROJECT_DIR$/src/ui/Minesweeper.fxml" />
-        <option value="$PROJECT_DIR$/src/logic/Tile.kt" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/ui/MinesweeperFrame.java" />
+        <option value="$PROJECT_DIR$/src/logic/Tile.kt" />
         <option value="$PROJECT_DIR$/src/logic/Board.kt" />
       </list>
     </option>
@@ -109,6 +104,23 @@
             <path>
               <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
               <item name="Minesweeper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Minesweeper" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Minesweeper" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="codeStyles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Minesweeper" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="dictionaries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Minesweeper" type="b2602c69:ProjectViewProjectNode" />
@@ -229,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551146056210</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Everything works">
+      <created>1551154593396</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1551154593396</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -254,7 +273,7 @@
       <window_info id="Favorites" order="6" side_tool="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25201073" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1300268" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39812332" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -284,8 +303,8 @@
       <window_info id="Favorites" order="6" side_tool="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13672923" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39812332" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25201073" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39812332" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
@@ -349,19 +368,10 @@
     <MESSAGE value="it works, no winning" />
     <MESSAGE value="flag image" />
     <MESSAGE value="resizes itself, except for reset button" />
-    <option name="LAST_COMMIT_MESSAGE" value="resizes itself, except for reset button" />
+    <MESSAGE value="Everything works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything works" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/logic/Board.kt</url>
-          <line>113</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="bombTiles" language="kotlin" />
@@ -408,22 +418,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/images/8.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/images/7.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MinesweeperFrame.kt" />
     <entry file="file://$PROJECT_DIR$/src/MinesweeperBoard.kt" />
     <entry file="file://$PROJECT_DIR$/src/MinesweeperFrame.kt" />
     <entry file="file://$PROJECT_DIR$/src/Main.kt" />
-    <entry file="file://$PROJECT_DIR$/src/images/1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/images/Empty.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Minesweeper.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -449,9 +447,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/Tile.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+          <folding>
+            <element signature="e#15#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/MinesweeperFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="455">
           <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -459,20 +467,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/Tile.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
-          <folding>
-            <element signature="e#15#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/Board.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+        <state relative-caret-position="206">
+          <caret line="115" column="36" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
         </state>
       </provider>
     </entry>
