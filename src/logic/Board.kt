@@ -3,11 +3,17 @@ package logic
 import javafx.event.EventHandler
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
 import java.util.*
 import kotlin.math.min
 
-data class Board(val width: Int, val height: Int, private var numMines: Int) {
+class Board(
+    private val width: Int,
+    private val height: Int,
+    private var numMines: Int,
+    private val gridRoot: GridPane
+) {
     companion object {
         private val rand = Random()
         private var gameStarted = false
@@ -19,8 +25,25 @@ data class Board(val width: Int, val height: Int, private var numMines: Int) {
         }
     }
 
-    var imageSize = 0.0
-        private set
+    var imageSize = 0.0; private set
+
+    var gridWidth = (gridRoot.parent as AnchorPane).prefWidth - gridRoot.layoutX * 2
+        set(value) {
+            gridRoot.children.clear()
+            addTiles()
+
+            field = value
+        }
+
+    var gridHeight = (gridRoot.parent as AnchorPane).prefHeight - gridRoot.layoutY - 20
+        set(value) {
+            gridRoot.children.clear()
+            addTiles()
+
+            field = value
+        }
+
+    private var revealedTileCount: Int = 0
 
     /**
      * x,y are location of clicked tile
@@ -44,35 +67,31 @@ data class Board(val width: Int, val height: Int, private var numMines: Int) {
             tiles[x][y].value = 0
         }
 
-        for (column in tiles) {
-            for (tile in column) {
-                if (tile.isBomb) continue
-                tile.value = tile.adjacentTiles
-                    .filter { it.first >= 0 }
-                    .filter { it.first < tiles.size }
-                    .filter { it.second >= 0 }
-                    .filter { it.second < tiles[0].size }
-                    .filter {
-                        tiles[it.first][it.second].isBomb
-                    }
-                    .count()
-            }
+        for (tile in tiles.flatten()) {
+            if (tile.isBomb) continue
+            tile.value = tile.adjacentTiles
+                .filter { it.first >= 0 }
+                .filter { it.first < tiles.size }
+                .filter { it.second >= 0 }
+                .filter { it.second < tiles[0].size }
+                .filter {
+                    tiles[it.first][it.second].isBomb
+                }
+                .count()
         }
     }
 
-    fun addTiles(gridRoot: GridPane) {
-        for (column in tiles) {
-            for (tile in column) {
-                val maxHeight = gridRoot.prefHeight - 20
-                val maxWidth = gridRoot.prefWidth - 20
-                val maxSize = min(maxHeight / height, maxWidth / width).also { imageSize = it }
-                tile.imageView.fitHeight = maxSize
-                tile.imageView.fitWidth = maxSize
-                tile.imageView.onMouseReleased = EventHandler { this.handleClick(it, tile) }
-                tile.setImageMaxSize(maxSize)
+    fun addTiles() {
+        for (tile in tiles.flatten()) {
+            val maxHeight = gridHeight
+            val maxWidth = gridWidth
+            imageSize = min(maxHeight / height, maxWidth / width)
+            tile.imageView.fitHeight = imageSize
+            tile.imageView.fitWidth = imageSize
+            tile.imageView.onMouseReleased = EventHandler { this.handleClick(it, tile) }
+            tile.setImageMaxSize(imageSize)
 
-                gridRoot.add(tile.imageView, tile.x, tile.y)
-            }
+            gridRoot.add(tile.imageView, tile.x, tile.y)
         }
     }
 
@@ -88,8 +107,6 @@ data class Board(val width: Int, val height: Int, private var numMines: Int) {
 
     private fun checkIfWon() {
     }
-
-    private var revealedTileCount: Int = 0
 
     private fun clickTile(x: Int, y: Int) {
         if (!gameStarted) {
@@ -123,13 +140,9 @@ data class Board(val width: Int, val height: Int, private var numMines: Int) {
         tiles[x][y].flag()
     }
 
-    fun resetAllTiles(gridRoot: GridPane) {
+    fun resetAllTiles() {
         gameStarted = false
-        for (column in tiles) {
-            for (tile in column) {
-                tile.reset()
-                gridRoot.children.clear()
-            }
-        }
+        tiles.flatten().forEach { it.reset() }
+        gridRoot.children.clear()
     }
 }
