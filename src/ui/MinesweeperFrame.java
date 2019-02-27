@@ -1,5 +1,7 @@
 package ui;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,6 +25,8 @@ public class MinesweeperFrame {
     private GridPane gridPane;
 
     private Board board;
+
+    private Timer time = new Timer();
 
     @FXML
     void initialize() {
@@ -49,6 +53,10 @@ public class MinesweeperFrame {
                 lblNumFlags
         );
         board.addTiles();
+
+        time.thread.start();
+
+        lblTimer.textProperty().bind();
     }
 
     private void windowWidthListener(ObservableValue<? extends Number> obs, Number oldWidth, Number newWidth) {
@@ -79,5 +87,21 @@ public class MinesweeperFrame {
         gridPane.setPrefHeight(height - gridPane.getLayoutY() - 20);
 
         board.setGridHeight(gridPane.getPrefHeight());
+    }
+
+    class Timer {
+        long startTime;
+        IntegerProperty currentTime;
+        Thread thread;
+
+        Timer() {
+            this.startTime = System.currentTimeMillis();
+            this.currentTime = new SimpleIntegerProperty(0);
+            thread = new Thread(this::run);
+        }
+
+        void run() {
+
+        }
     }
 }
