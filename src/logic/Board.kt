@@ -1,5 +1,7 @@
 package logic
 
+import javafx.animation.Timeline
+import javafx.beans.property.SimpleDoubleProperty
 import javafx.event.EventHandler
 import javafx.scene.control.Alert
 import javafx.scene.control.Label
@@ -15,13 +17,15 @@ class Board(
     private val height: Int,
     private var numMines: Int,
     private val gridRoot: GridPane,
-    private val lblNumFlags: Label
+    private val lblNumFlags: Label,
+    private val timeline: Timeline,
+    private val resetFunction: Runnable
 ) {
     companion object {
         private val rand = Random()
     }
 
-    var tiles: Array<Array<Tile>> = Array(width) { x ->
+    var tiles = Array(width) { x ->
         Array(height) { y ->
             Tile(x, y)
         }
@@ -48,6 +52,12 @@ class Board(
         }
 
     private var gameStarted = false
+
+    private var gameOver = false
+        set(value) {
+            if (value) timeline.stop()
+            field = value
+        }
 
     private var flaggedTileCount = 0
         set(value) {
@@ -95,6 +105,8 @@ class Board(
                 }
                 .count()
         }
+
+        timeline.play()
     }
 
     fun addTiles() {
@@ -110,6 +122,8 @@ class Board(
     }
 
     private fun handleClick(event: MouseEvent, tile: Tile) {
+        if (gameOver) resetAllTiles()
+
         if (event.button == MouseButton.SECONDARY || event.isControlDown) flagTile(tile.x, tile.y)
         else clickTile(tile.x, tile.y)
 
@@ -118,17 +132,18 @@ class Board(
 
     private fun checkIfWon() {
         if (bombTiles.any { it.isRevealed }) {
+            gameOver = true
+
             val alert = Alert(Alert.AlertType.INFORMATION)
             alert.title = "game over"
             alert.headerText = "YA LOST"
             alert.contentText = "Donut click mines"
             alert.showAndWait()
-
-            resetAllTiles()
-            addTiles()
         }
 
         if (tiles.flatten().all { it.isRevealed || it.isBomb }) {
+            gameOver = true
+
             val alert = Alert(Alert.AlertType.INFORMATION)
             alert.title = ":("
             alert.headerText = "you win"
@@ -177,5 +192,6 @@ class Board(
         tiles.flatten().forEach { it.reset() }
         gridRoot.children.clear()
         flaggedTileCount = 0
+        resetFunction.run()
     }
 }

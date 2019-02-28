@@ -1,7 +1,9 @@
 package ui;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import logic.Board;
 
 public class MinesweeperFrame {
@@ -24,39 +27,47 @@ public class MinesweeperFrame {
     @FXML
     private GridPane gridPane;
 
-    private Board board;
+    private Timeline timeline;
+    private SimpleDoubleProperty timeProp = new SimpleDoubleProperty(0);
 
-    private Timer time = new Timer();
+    private Board board;
 
     @FXML
     void initialize() {
+        timeline = new Timeline(
+                new KeyFrame(Duration.millis(10),
+                        event -> timeProp.setValue(Math.round(100. * (timeProp.doubleValue() + ((KeyFrame) event.getSource()).getTime().toSeconds())) / 100.)
+                )
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+
         reset();
 
         AnchorPane stage = (AnchorPane) gridPane.getParent();
         stage.widthProperty().addListener((this::windowWidthListener));
         stage.heightProperty().addListener(this::windowHeightListener);
 
-//        lblNumFlags.textProperty().bind(board.getFlaggedTileCount().asString());
+        lblTimer.textProperty().bind(timeProp.asString());
     }
 
     @FXML
     private void btnRestart() {
         board.resetAllTiles();
-        reset();
     }
 
     private void reset() {
+        timeProp.setValue(0);
+        timeline.stop();
+
         board = new Board(Integer.valueOf(txtTileWidth.getText()),
                 Integer.valueOf(txtTileHeight.getText()),
                 Integer.valueOf(txtNumMines.getText()),
                 gridPane,
-                lblNumFlags
+                lblNumFlags,
+                timeline,
+                this::reset
         );
         board.addTiles();
-
-        time.thread.start();
-
-        lblTimer.textProperty().bind();
     }
 
     private void windowWidthListener(ObservableValue<? extends Number> obs, Number oldWidth, Number newWidth) {
@@ -87,21 +98,5 @@ public class MinesweeperFrame {
         gridPane.setPrefHeight(height - gridPane.getLayoutY() - 20);
 
         board.setGridHeight(gridPane.getPrefHeight());
-    }
-
-    class Timer {
-        long startTime;
-        IntegerProperty currentTime;
-        Thread thread;
-
-        Timer() {
-            this.startTime = System.currentTimeMillis();
-            this.currentTime = new SimpleIntegerProperty(0);
-            thread = new Thread(this::run);
-        }
-
-        void run() {
-
-        }
     }
 }

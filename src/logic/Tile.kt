@@ -8,6 +8,8 @@ data class Tile(val x: Int, val y: Int) {
     companion object {
         private val startImage = Image("images/CoveredTile.png")
         private val flagImage = Image("images/Flag.png")
+        private val emptyImage = Image("images/Empty.png")
+        private val numImages = Array(8) { Image("images/${it + 1}.png") }
     }
 
     var value: Int = 0
@@ -32,8 +34,8 @@ data class Tile(val x: Int, val y: Int) {
         isRevealed = true
         imageView.image = when (value) {
             -1 -> Image("images/Mine.png")
-            0 -> Image("images/Empty.png")
-            else -> Image("images/$value.png")
+            0 -> emptyImage
+            else -> numImages[value - 1]
         }
     }
 
