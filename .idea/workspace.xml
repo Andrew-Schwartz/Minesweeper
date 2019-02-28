@@ -21,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/src/High Scores.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+              <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -127,7 +127,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/APCS/IdeaProjects/Minesweeper/src/logic/Tile.kt" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551327333432" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551327735752" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -233,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551313827570</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="score">
+      <created>1551327352941</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1551327352941</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -355,7 +362,8 @@
     <MESSAGE value="resizes itself, except for reset button" />
     <MESSAGE value="bug fixes and timer label" />
     <MESSAGE value="Perfection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Perfection" />
+    <MESSAGE value="score" />
+    <option name="LAST_COMMIT_MESSAGE" value="score" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -470,7 +478,7 @@
     <entry file="file://$PROJECT_DIR$/src/High Scores.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
         </state>
       </provider>
     </entry>
