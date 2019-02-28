@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d663a4b-ec61-476a-9547-01a0f5972565" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/High Scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/logic/Board$addTiles$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/logic/Board$addTiles$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/logic/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/logic/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/logic/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/logic/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Minesweeper/ui/MinesweeperFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Minesweeper/ui/MinesweeperFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Board.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Tile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Tile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MinesweeperFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MinesweeperFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/High Scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/High Scores.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/src/High Scores.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -134,7 +127,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/APCS/IdeaProjects/Minesweeper/src/logic/Tile.kt" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551313782857" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551327333432" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -233,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551196583971</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Perfection">
+      <created>1551313827569</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1551313827570</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -354,7 +354,8 @@
     <MESSAGE value="flag image" />
     <MESSAGE value="resizes itself, except for reset button" />
     <MESSAGE value="bug fixes and timer label" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes and timer label" />
+    <MESSAGE value="Perfection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Perfection" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -469,7 +470,7 @@
     <entry file="file://$PROJECT_DIR$/src/High Scores.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
         </state>
       </provider>
     </entry>
