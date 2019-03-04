@@ -107,8 +107,6 @@ class Board(
         }
 
         timeline.play()
-
-//        clickTile(x, y)
     }
 
     fun addTiles() {
@@ -152,6 +150,8 @@ class Board(
             alert.contentText = "good job"
             alert.showAndWait()
         }
+
+        if (gameOver) resetAllTiles()
     }
 
     private fun clickTile(x: Int, y: Int) {
