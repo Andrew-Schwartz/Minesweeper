@@ -107,6 +107,8 @@ class Board(
         }
 
         timeline.play()
+
+//        clickTile(x, y)
     }
 
     fun addTiles() {

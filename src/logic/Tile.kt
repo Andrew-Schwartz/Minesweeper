@@ -9,6 +9,7 @@ data class Tile(val x: Int, val y: Int) {
         private val startImage = Image("images/CoveredTile.png")
         private val flagImage = Image("images/Flag.png")
         private val emptyImage = Image("images/Empty.png")
+        private val mineImage = Image("images/Mine.png")
         private val numImages = Array(8) { Image("images/${it + 1}.png") }
     }
 
@@ -33,7 +34,7 @@ data class Tile(val x: Int, val y: Int) {
     fun reveal() {
         isRevealed = true
         imageView.image = when (value) {
-            -1 -> Image("images/Mine.png")
+            -1 -> mineImage
             0 -> emptyImage
             else -> numImages[value - 1]
         }
